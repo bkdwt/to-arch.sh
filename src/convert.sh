@@ -68,7 +68,7 @@ grepPacmanQuery pacui && pacman -Qq | grep pacui | xargs pacman -Rdd --noconfirm
 pacman -Qq pacui &>/dev/null && pacman -Qq | grep pacui | xargs pacman -Rdd --noconfirm
 pacman -Qq bmenu &>/dev/null && pacman -Qq | grep bmenu | xargs pacman -Rdd --noconfirm
 
-# Manjaro uses a different mirrorlist package toidentify from the Arch one.
+# Manjaro uses a different mirrorlist package to identify from the Arch one.
 pacman -Qq pacman-mirrors &>/dev/null && pacman -Qq | grep pacman-mirrors | xargs pacman -Rdd --noconfirm
 
 # Get pacman, mirrorlist and lsb_release from website, not mirrors
@@ -78,7 +78,7 @@ pacman -U https://www.archlinux.org/packages/core/x86_64/pacman/download/ https:
 # Do it again, because conf gets reset
 sed -i '/SyncFirst/d' /etc/pacman.conf
 
-# Deletes the Manjaro UEFI entry. Very dangerous operation if misused, but I tested this multiple times and it was good.
+# Deletes the Manjaro UEFI entry. It's a very dangerous operation if misused, but I tested this multiple times and it was good.
 if [ -d /sys/firmware/efi ]; then
 	efibootmgr>/tmp/efi_count_tmp
 	count="$(grep -ic Manjaro /tmp/efi_count_tmp)"
@@ -126,7 +126,7 @@ fi
 sed -i '/manjaro/c\Arch' /etc/hosts
 sed -i '/Manjaro/c\Arch' /etc/hosts
 
-# linux-lts is generally more stable(especially for intel graphics, uhd620 seems to have a black screen issue since 5.11)
+# linux-lts is generally more stable(especially for Intel graphics, uhd620 seems to have a black screen issue since 5.11)
 printf "What kernel? Press 1 for linux-lts(more stable), 2 for normal linux.\n"
 read -rn 1 whatkernel
 case "$whatkernel" in
@@ -212,6 +212,8 @@ if grepPacmanQuery sway; then
 	pacman -S dmenu --noconfirm
 fi
 
+# This file is known to exist in the gnome edition, but somehow vanishes after reboot.
+# Still let's change it.
 if [ -f /etc/arch-release ]; then
 	sed -i '/Manjaro/c\Arch' /etc/arch-release
 fi
