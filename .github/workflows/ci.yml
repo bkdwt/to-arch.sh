@@ -10,6 +10,7 @@ on:
       - 'src/**'
       - '.github/workflows/**'
       - 'Makefile'
+  workflow_dispatch:
 jobs:
   merge:
     name: Make
