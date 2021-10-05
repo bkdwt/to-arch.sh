@@ -228,3 +228,5 @@ if [ -f /boot/grub/grub.cfg.new ]; then
 	fi
 	mv /boot/grub/grub.cfg.new /boot/grub/grub.cfg
 fi
+
+[ -f /.manjaro-tools ] && rm -f /.manjaro-tools
