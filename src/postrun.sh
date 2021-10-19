@@ -5,7 +5,9 @@ if pacman -Qq | grep -q plasma-desktop; then
 fi
 # Changes shell since this will remove Manjaro's zsh configs.
 # I use yash btw.
-chsh -s "/bin/bash"
+printf "Would you like to change the shell?\nManjaro\'s default zsh plugins have all been uninstalled. (Y/n)"
+read -r shell
+[ "$(tr '[:upper:]' '[:lower:]' <<< "$shell")" = "n" ] || chsh -s "/bin/bash"
 # Deletes sway config cuz sway edition saves its configs in a packages and sway gets borked after deleteing those.
 # And yes sway will look like plain i3.
 if pacman -Qq | grep -q sway; then
@@ -31,6 +33,6 @@ fi
 # Reboot if you want.
 printf "Would you like to reboot? Make sure you have read the above carefully! (y/N)"
 read -r reboot
-#Thanks to YTG1234 for this line. This is a pure bit of genius.
+#Thanks to YTG1234 for this line.
 # If we're already using Bash (#!/usr/bin/env bash), why not make use of its neat features
 [ "$(tr '[:upper:]' '[:lower:]' <<< "$reboot")" = "y" ] && reboot
