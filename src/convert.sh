@@ -151,18 +151,18 @@ grepPacmanQuery illyria-wallpaper && pacman -Rdd illyria-wallpaper --noconfirm
 sed -i '/GRUB_TIMEOUT_STYLE=hidden/d' /etc/default/grub
 
 # Changes Manjaro GRUB theme. Manjaro doesn't have an option to install systemd-boot, Right? I'm just assuming you have a clean install of Manjaro.
-curl -fLOs https://github.com/AdisonCavani/distro-grub-themes/releases/download/v2.1/ArchLinux.tar
-
-[ -d /boot/grub/themes/archlinux ] && rm -rf /boot/grub/themes/archlinux
-mkdir /boot/grub/themes/archlinux
-
-tar -xf ArchLinux.tar -C /boot/grub/themes/archlinux
-sed -i '/GRUB_THEME=/c GRUB_THEME="/boot/grub/themes/archlinux/theme.txt"' /etc/default/grub
-
-# Generate GRUB stuff
-grub-mkconfig -o /boot/grub/grub.cfg
-[ -d /sys/firmware/efi ] && grub-install
-
+if ! [ "$(bootctl is-installed 2>&1 | grep -i yes)" ]; then
+	curl -fLOs https://github.com/AdisonCavani/distro-grub-themes/releases/download/v2.1/ArchLinux.tar
+	[ -d /boot/grub/themes/archlinux ] && rm -rf /boot/grub/themes/archlinux
+	mkdir /boot/grub/themes/archlinux
+	tar -xf ArchLinux.tar -C /boot/grub/themes/archlinux
+	sed -i '/GRUB_THEME=/c GRUB_THEME="/boot/grub/themes/archlinux/theme.txt"' /etc/default/grub
+	# Generate GRUB stuff
+	grub-mkconfig -o /boot/grub/grub.cfg
+	[ -d /sys/firmware/efi ] && grub-install
+else 
+	bootctl update
+fi
 # Locale fix
 # It scared the daylights out of me when I realized gnome-terminal won't start without this part
 [ -f /etc/locale.conf.pacsave ] && \mv -f /etc/locale.conf.pacsave /etc/locale.conf
