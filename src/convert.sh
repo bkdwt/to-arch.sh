@@ -40,6 +40,7 @@ removeIfMatched manjaro-keyring
 	
 	#Korean Anigil mirror sucks
 	sed -i '/anigil/d' /etc/pacman.d/mirrorlist
+	sed -i '/harukasan/d' /etc/pacman.d/mirrorlist
 	
 	[ -f /etc/pacman.d/mirrorlist.pacnew ] && rm /etc/pacman.d/mirrorlist.pacnew
 	[ -f /etc/pacman.conf.pacnew ] && rm /etc/pacman.conf.pacnew
