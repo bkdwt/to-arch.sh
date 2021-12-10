@@ -1,5 +1,5 @@
 # Manjaro to Arch conversion script
-![](https://img.shields.io/github/downloads/sugarykeytone/Manjaro_to_Arch_Linux/total)<br>
+![](https://img.shields.io/github/downloads/igrshi-kske/manjaro-to-arch.sh/total)<br>
 This is a script to convert a Manjaro installation to an Arch installation with a single command for users who want a fuss-free conversion from Manjaro to Arch. <br>This script is inspired by [this gist](https://gist.github.com/mariuszkurek/bff8a821076f5406b15fe9be528957b6/).<br>
 
 ## Showcase(7x speedup)
