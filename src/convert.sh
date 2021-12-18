@@ -181,6 +181,11 @@ if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 	sed -i '/background/d' /etc/lightdm/lightdm-gtk-greeter.conf
 	sed -i '/default-user-image/d' /etc/lightdm/lightdm-gtk-greeter.conf
 fi
+[ -f /etc/os-release ] && sed -i 's/Manjaro/Arch/g' /etc/os-release
+[ -f /etc/os-release ] && sed -i 's/ID=manjaro/ID=arch/g' /etc/os-release
+[ -f /etc/os-release ] && sed -i '/ANSI_COLOR/d' /etc/os-release
+[ -f /etc/os-release ] && sed -i 's/manjaro/archlinux/g' /etc/os-release
+[ -f /etc/os-release ] && sed -i 's/manjarolinuxlinux/archlinux/g' /etc/os-release
 
 # Screenfetch takes an eternity to run in VMs. I have no damn idea why.
 neofetch
