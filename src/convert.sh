@@ -160,7 +160,7 @@ if ! [ "$(bootctl is-installed 2>&1 | grep -i yes)" ]; then
 	sed -i '/GRUB_THEME=/c GRUB_THEME="/boot/grub/themes/archlinux/theme.txt"' /etc/default/grub
 	# Generate GRUB stuff
 	grub-mkconfig -o /boot/grub/grub.cfg
-	[ -d /sys/firmware/efi ] && grub-install
+
 else 
 	bootctl update
 fi
