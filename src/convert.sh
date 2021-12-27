@@ -159,7 +159,7 @@ if ! [ "$(bootctl is-installed 2>&1 | grep -i yes)" ]; then
 
 else 
 	bootctl remove
-        bootct install
+        bootctl install
 fi
 # Locale fix
 # It scared the daylights out of me when I realized gnome-terminal won't start without this part
