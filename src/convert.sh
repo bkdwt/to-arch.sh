@@ -113,7 +113,7 @@ if [ "$(cat /etc/pacman.conf | grep '\[manjaro-sway\]')" ]; then
 fi
 
 # -Syyyyyyyyyyuuuuuuuu calms me down
-pacman -Syyuu bash --noconfirm
+pacman -Syyu bash --noconfirm
 
 # As Linus Torvalds said
 pacman -Qq | grep mhwd | xargs pacman -Rdd --noconfirm 2>/dev/null
