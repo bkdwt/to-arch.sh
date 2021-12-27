@@ -38,9 +38,7 @@ removeIfMatched manjaro-keyring
 	# Get mirrorlist
 	curl -o mirrorlist -sL 'https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&ip_version=6'
 	
-	#Korean Anigil mirror sucks
-	sed -i '/anigil/d' /etc/pacman.d/mirrorlist
-	sed -i '/harukasan/d' /etc/pacman.d/mirrorlist
+	
 	
 	[ -f /etc/pacman.d/mirrorlist.pacnew ] && rm /etc/pacman.d/mirrorlist.pacnew
 	[ -f /etc/pacman.conf.pacnew ] && rm /etc/pacman.conf.pacnew
@@ -79,16 +77,16 @@ pacman -U https://www.archlinux.org/packages/core/x86_64/pacman/download/ https:
 # Do it again, because conf gets reset
 sed -i '/SyncFirst/d' /etc/pacman.conf
 
-# Deletes the Manjaro UEFI entry. It's a very dangerous operation if misused, but I tested this multiple times and it was good.
-if [ -d /sys/firmware/efi ]; then
-	efibootmgr>/tmp/efi_count_tmp
-	count="$(grep -ic Manjaro /tmp/efi_count_tmp)"
-	if (( count > 1 )); then
-		continue
-	else
-		efibootmgr -b "$(efibootmgr | grep Manjaro | sed 's/*//' | cut -f 1 -d' ' | cut -c5-)" -B
-	fi
-fi
+# # Deletes the Manjaro UEFI entry. It's a very dangerous operation if misused, but I tested this multiple times and it was good.
+#if [ -d /sys/firmware/efi ]; then
+	#efibootmgr>/tmp/efi_count_tmp
+	#count="$(grep -ic Manjaro /tmp/efi_count_tmp)"
+	#if (( count > 1 )); then
+		#continue
+	#else
+		#efibootmgr -b "$(efibootmgr | grep Manjaro | sed 's/*//' | cut -f 1 -d' ' | cut -c5-)" -B
+	#fi
+#fi
 
 # Change grub
 sed -i '/GRUB_DISTRIBUTOR="Manjaro"/c\GRUB_DISTRIBUTOR="Arch"' /etc/default/grub
@@ -138,11 +136,9 @@ esac
 # Fück you nvidia
 pacman -Qq | grep nvidia | xargs pacman -Rdd --noconfirm 2>/dev/null
 if [ "$(lspci | grep -i nvidia)" ]; then
-	if [ "$(pacman -Qq | grep linux-lts)" ]; then
-		pacman -S nvidia-lts --noconfirm
-	else
-		pacman -S nvidia --noconfirm
-	fi
+        
+	pacman -S nvidia-dkms --noconfirm
+	
 fi
 
 # Some wallpaper removal. I heard that it's in budgie and xfce editions.
@@ -162,7 +158,8 @@ if ! [ "$(bootctl is-installed 2>&1 | grep -i yes)" ]; then
 	grub-mkconfig -o /boot/grub/grub.cfg
 
 else 
-	bootctl update
+	bootctl remove
+        bootct install
 fi
 # Locale fix
 # It scared the daylights out of me when I realized gnome-terminal won't start without this part
