@@ -149,7 +149,7 @@ sed -i '/GRUB_TIMEOUT_STYLE=hidden/d' /etc/default/grub
 
 # Changes Manjaro GRUB theme. Manjaro doesn't have an option to install systemd-boot, Right? I'm just assuming you have a clean install of Manjaro.
 if ! [ "$(bootctl is-installed 2>&1 | grep -i yes)" ]; then
-	curl -fLOs https://github.com/AdisonCavani/distro-grub-themes/releases/download/v2.1/ArchLinux.tar
+	curl -fLOs https://github.com/AdisonCavani/distro-grub-themes/releases/latest/download/arch.tar
 	[ -d /boot/grub/themes/archlinux ] && rm -rf /boot/grub/themes/archlinux
 	mkdir /boot/grub/themes/archlinux
 	tar -xf ArchLinux.tar -C /boot/grub/themes/archlinux
