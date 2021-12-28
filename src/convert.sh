@@ -136,9 +136,7 @@ esac
 # Fück you nvidia
 pacman -Qq | grep nvidia | xargs pacman -Rdd --noconfirm 2>/dev/null
 if [ "$(lspci | grep -i nvidia)" ]; then
-        
-	pacman -S nvidia-dkms --noconfirm
-	
+    pacman -S nvidia-dkms --noconfirm
 fi
 
 # Some wallpaper removal. I heard that it's in budgie and xfce editions.
@@ -159,7 +157,7 @@ if ! [ "$(bootctl is-installed 2>&1 | grep -i yes)" ]; then
 
 else 
 	bootctl remove
-        bootctl install
+    bootctl install
 fi
 # Locale fix
 # It scared the daylights out of me when I realized gnome-terminal won't start without this part
@@ -220,9 +218,6 @@ fi
 if [ -f /etc/arch-release ]; then
 	sed -i '/Manjaro/c\Arch' /etc/arch-release
 fi
-
-# Deletes leftover shit from Manjaro UEFI boot entry
-[ -d /boot/efi/EFI/Manjaro ] && rm -rf /boot/efi/EFI/Manjaro
 
 # BIOS, LUKS fix
 if [ -f /boot/grub/grub.cfg.new ]; then
