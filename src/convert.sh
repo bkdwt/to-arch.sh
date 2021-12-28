@@ -111,7 +111,7 @@ if [ "$(cat /etc/pacman.conf | grep '\[manjaro-sway\]')" ]; then
 fi
 
 # -Syyyyyyyyyyuuuuuuuu calms me down
-pacman -Syyu bash --noconfirm
+pacman -Syyu --overwrite \* bash --noconfirm
 
 # As Linus Torvalds said
 pacman -Qq | grep mhwd | xargs pacman -Rdd --noconfirm 2>/dev/null
@@ -156,7 +156,7 @@ if ! [ "$(bootctl is-installed 2>&1 | grep -i yes)" ]; then
 	grub-mkconfig -o /boot/grub/grub.cfg
 
 else 
-	bootctl remove
+    bootctl remove
     bootctl install
 fi
 # Locale fix
