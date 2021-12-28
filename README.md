@@ -10,8 +10,7 @@ https://user-images.githubusercontent.com/90227297/138561089-12f7fa8e-270d-484b-
 
 ## Why did I write this?
 
-A few months ago, I was using Manjaro just because I liked the green theme, and I just wanted to compile [paru](https://github.com/Morganamilo/paru).<br>`pacman`, which recently had a major update at the time, weren't updated in Manjaro's mirrors, but `paru` already had an implementation of the updated versions.<br>I did manage to compile it by switching to an old tag, but it was very inconvenient, and I decided to switch to Arch while preserving my userspace. Online guides of it were wrong in many ways, and I finally found a working _script_ which _did_ work, but was incomplete. I decided to improve it, and the result is this.
-#### Also I wanted to help people who aren't skilled enough to install Arch, but wants to say `btw i use arch`.
+### Why not?
 
 ## How this script works
 
