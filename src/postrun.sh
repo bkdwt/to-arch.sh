@@ -19,8 +19,8 @@ if pacman -Qq | grep -q sway; then
 	sed -i '/alacritty/c\foot' ~/.config/sway/config
 	sed -i '/Wallpaper/d' ~/.config/sway/config
 	cd "${workdir}"
-	# I know this part is extremely hacky and weird, but chsh doesn't change foots shell.
-	echo "clear;exec bash" >> ~/.zshrc
+	# # I know this part is extremely hacky and weird, but chsh doesn't change foots shell.
+	#echo "clear;exec bash" >> ~/.zshrc
 fi
 # Some i3 MaNjArO removal.
 if pacman -Qq | grep -q i3; then
