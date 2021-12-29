@@ -24,18 +24,18 @@ to_arch: src/*
 	fi
 
 	@if command -v gsed; then \
-		gsed -e '/__POSTSCRIPT__/{r 'src/postrun.sh'' -e 'd}' 'src/convertmerge' > to_arch; \
+		gsed -e '/__POSTSCRIPT__/{r 'src/postrun.sh'' -e 'd}' 'src/convertmerge' > to_arch.sh; \
 	else \
-		sed -e '/__POSTSCRIPT__/{r 'src/postrun.sh'' -e 'd}' 'src/convertmerge' > to_arch; \
+		sed -e '/__POSTSCRIPT__/{r 'src/postrun.sh'' -e 'd}' 'src/convertmerge' > to_arch.sh; \
 	fi
 	
 	@rm -f src/*merge src/convert_.sh
 
-	@chmod 755 to_arch
+	@chmod 755 to_arch.sh
 
 	@echo Successfully made script
 .PHONY: clean
 clean:
-	@rm -f to_arch
+	@rm -f to_arch.sh
 
 	@echo Successfully cleaned script
