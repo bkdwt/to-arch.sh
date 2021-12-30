@@ -1,6 +1,6 @@
-all: to_arch
+all: to-arch
 
-to_arch: src/*
+to-arch: src/*
 	@#The at symbol tells gmake to not echo the line being executed
 
 	@if command -v gsed; then \
@@ -24,18 +24,18 @@ to_arch: src/*
 	fi
 
 	@if command -v gsed; then \
-		gsed -e '/__POSTSCRIPT__/{r 'src/postrun.sh'' -e 'd}' 'src/convertmerge' > to_arch.sh; \
+		gsed -e '/__POSTSCRIPT__/{r 'src/postrun.sh'' -e 'd}' 'src/convertmerge' > to-arch.sh; \
 	else \
-		sed -e '/__POSTSCRIPT__/{r 'src/postrun.sh'' -e 'd}' 'src/convertmerge' > to_arch.sh; \
+		sed -e '/__POSTSCRIPT__/{r 'src/postrun.sh'' -e 'd}' 'src/convertmerge' > to-arch.sh; \
 	fi
 	
 	@rm -f src/*merge src/convert_.sh
 
-	@chmod 755 to_arch.sh
+	@chmod 755 to-arch.sh
 
 	@echo Successfully made script
 .PHONY: clean
 clean:
-	@rm -f to_arch.sh
+	@rm -f to-arch.sh
 
 	@echo Successfully cleaned script
