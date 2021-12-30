@@ -19,7 +19,7 @@ rm -f /usr/share/libalpm/hooks/eos*
 # Fret not, my friend, as our trustworthy yay would AUR itself when updating
 pacman -Sl endeavouros | cut -f 2 -d' '>/tmp/endeavouros_pkglist
 while read line; do
-    removeIfMatched $line
+    removeIfMatched $line 2>/dev/null
 done < /tmp/endeavouros_pkglist
 
 if [ "$(cat /etc/pacman.conf | grep '\[endeavouros\]')" ]; then
