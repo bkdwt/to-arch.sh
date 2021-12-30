@@ -18,27 +18,27 @@ to-arch: src/*
 	fi
 
 	@if command -v gsed; then \
-		gsed -e '/__CONVERTSCRIPT_MANJARNO__/{r 'src/convert-manjaro_.sh'' -e 'd}' 'src/premerge' > src/convertmanjaromerge; \
+		gsed -e '/__CONVERTSCRIPT_MANJARNO__/{r 'src/convert-manjaro_.sh'' -e 'd}' 'src/body.sh' > src/convertmanjaromerge; \
 	else \
-		sed -e '/__CONVERTSCRIPT_MANJARNO__/{r 'src/convert-manjaro_.sh'' -e 'd}' 'src/premerge' > src/convertmanjaromerge; \
+		sed -e '/__CONVERTSCRIPT_MANJARNO__/{r 'src/convert-manjaro_.sh'' -e 'd}' 'src/body.sh' > src/convertmanjaromerge; \
 	fi
 	
 	@if command -v gsed; then \
-		gsed -e '/__CONVERTSCRIPT_ENDEAVOUROS__/{r 'src/convert-endeavour_.sh'' -e 'd}' 'src/premerge' > src/convertendeavourmerge; \
+		gsed -e '/__CONVERTSCRIPT_ENDEAVOUROS__/{r 'src/convert-endeavour_.sh'' -e 'd}' 'src/convertmanjaromerge' > src/convertendeavourmerge; \
 	else \
-		sed -e '/__CONVERTSCRIPT_ENDEAVOUROS__/{r 'src/convert-endeavour_.sh'' -e 'd}' 'src/premerge' > src/convertendeavourmerge; \
+		sed -e '/__CONVERTSCRIPT_ENDEAVOUROS__/{r 'src/convert-endeavour_.sh'' -e 'd}' 'src/convertmanjaromerge' > src/convertendeavourmerge; \
 	fi
 
 	@if command -v gsed; then \
-		gsed -e '/__POSTSCRIPT_MANJARNO__/{r 'src/convertendeavourmerge.sh'' -e 'd}' 'src/convertendeavourmerge' > postjaro.sh; \
+		gsed -e '/__POSTSCRIPT_MANJARNO__/{r 'src/postrun-manjaro.sh'' -e 'd}' 'src/convertendeavourmerge' > postjaro.sh; \
 	else \
-		sed -e '/__POSTSCRIPT_MANJARNO__/{r 'src/convertendeavourmerge.sh'' -e 'd}' 'src/convertendeavourmerge' > postjaro.sh; \
+		sed -e '/__POSTSCRIPT_MANJARNO__/{r 'src/postrun-manjaro.sh'' -e 'd}' 'src/convertendeavourmerge' > postjaro.sh; \
 	fi
 	
 	@if command -v gsed; then \
-		gsed -e '/__POSTSCRIPT_ENDEAVOUROS__/{r 'src/postjaro.sh'' -e 'd}' 'src/postrun-endeavour.sh' > to-arch.sh; \
+		gsed -e '/__POSTSCRIPT_ENDEAVOUROS__/{r 'src/postrun-endeavour.sh'' -e 'd}' 'src/postjaro.sh' > to-arch.sh; \
 	else \
-		sed -e '/__POSTSCRIPT_ENDEAVOUROS__/{r 'src/postjaro.sh'' -e 'd}' 'src/postrun-endeavour.sh' > to-arch.sh; \
+		sed -e '/__POSTSCRIPT_ENDEAVOUROS__/{r 'src/postrun-endeavour.sh'' -e 'd}' 'src/postjaro.sh' > to-arch.sh; \
 	fi
 	
 	@rm -f src/*merge src/postjaro.sh src/*_.sh
