@@ -14,26 +14,18 @@ prescript(){
 __PRESCRIPT__
 }
 
-DISTRO=$(prescript)
-
-if [ "${DISTRO}" == "MANJARNO" ]; then
-    CONVERTER_MANJARNO
-else
-    CONVERTER_ENDEAVOUR
-fi
-
-#no. no manjaro. manjaro bad.
+#no. no manjaro. manjaro bad. convert fast. right now.
 CONVERTER_MANJARNO(){
 ## System-wide jobs. The core part, this breaks and you system gets borked.
 ## If you use doas instead of sudo, then simply change the sudo to doas.
 sudo bash -c '
-__CONVERTSCRIPT_MANJARMO__
+__CONVERTSCRIPT_MANJARNO__
 ' 2>/dev/null # 2>/dev/null is for error redirection.
 ## User-wide jobs. Some important cleanup jobs, especially for sway. Makes script more seamless.
 __POSTSCRIPT_MANJARNO__
 }
 
-#endeavour better. still not arch. 
+#endeavour better. still not arch. let's convert.
 CONVERTER_ENDEAVOUR(){
 ## System-wide jobs. The core part, this breaks and you system gets borked.
 ## If you use doas instead of sudo, then simply change the sudo to doas.
@@ -43,6 +35,15 @@ __CONVERTSCRIPT_ENDEAVOUR__
 ## User-wide jobs. Some important cleanup jobs, especially for sway. Makes script more seamless.
 __POSTSCRIPT_ENDEAVOUR__
 }
+
+DISTRO=$(prescript)
+
+if [ "${DISTRO}" == "MANJARNO" ]; then
+    CONVERTER_MANJARNO
+else
+    CONVERTER_ENDEAVOUR
+fi
+
 
 # Sometimes the script gives out a non-0 exit code even when there are no errors.
 [ $? != 0 ] && exit 0;
