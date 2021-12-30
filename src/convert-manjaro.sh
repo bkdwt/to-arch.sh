@@ -188,7 +188,7 @@ fi
 [ -f /etc/os-release ] && sed -i 's/archlinuxlinux/archlinux-logo/g' /etc/os-release
 
 
-[ -f /etc/issue ] && sed -i 's/EndeavourOS/Arch/g' /etc/issue
+[ -f /etc/issue ] && sed -i 's/Manjaro/Arch/g' /etc/issue
 
 # Screenfetch takes an eternity to run in VMs. I have no damn idea why.
 neofetch
