@@ -156,8 +156,8 @@ if ! [ "$(bootctl is-installed | grep -i yes)" ]; then
 	grub-mkconfig -o /boot/grub/grub.cfg
 
 else 
-    bootctl remove
-    bootctl install
+    bootctl update
+    printf "Systemd-boot users have to edit the updated the entries manually.\nYou're on your own."
 fi
 # Locale fix
 # It scared the daylights out of me when I realized gnome-terminal won't start without this part
