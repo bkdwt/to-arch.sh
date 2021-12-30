@@ -180,6 +180,8 @@ if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 	sed -i '/background/d' /etc/lightdm/lightdm-gtk-greeter.conf
 	sed -i '/default-user-image/d' /etc/lightdm/lightdm-gtk-greeter.conf
 fi
+
+# I know... sorry...
 [ -f /etc/os-release ] && sed -i 's/Manjaro/Arch/g' /etc/os-release
 [ -f /etc/os-release ] && sed -i 's/ID=manjaro/ID=arch/g' /etc/os-release
 [ -f /etc/os-release ] && sed -i 's/ANSI_COLOR="32;1;24;144;200"/ANSI_COLOR="38;2;23;147;209"/g' /etc/os-release
