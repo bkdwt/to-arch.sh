@@ -16,11 +16,8 @@ tmp_dir="$(mktemp -d)"
 
 rm -f /usr/share/libalpm/hooks/eos*
 
-# Fret not, my friend, as our trustworthy yay would AUR itself when updating
-pacman -Sl endeavouros | cut -f 2 -d' '>/tmp/endeavouros_pkglist
-while read line; do
-    removeIfMatched $line 2>/dev/null
-done < /tmp/endeavouros_pkglist
+#https://bbs.archlinux.org/viewtopic.php?id=183737
+LANG=C sudo pacman -Rcns $(pacman -Sl endeavouros | grep '\[installed\]' | cut -f2 -d' ')
 
 if [ "$(cat /etc/pacman.conf | grep '\[endeavouros\]')" ]; then
 	sudo sed -ie '/\[endeavouros\]/,+2d' /etc/pacman.conf
