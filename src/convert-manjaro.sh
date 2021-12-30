@@ -12,7 +12,7 @@ removeIfMatched() { # $1 - Pattern
 # Temporary directory to store all our stuff in
 tmp_dir="$(mktemp -d)"
 
-pacman -Syy neofetch micro vim --noconfirm
+pacman -Syy neofetch micro vim efibootmgr --noconfirm
 neofetch
 printf "This is your current distro state.\n"
 
@@ -146,11 +146,11 @@ grepPacmanQuery illyria-wallpaper && pacman -Rdd illyria-wallpaper --noconfirm
 sed -i '/GRUB_TIMEOUT_STYLE=hidden/d' /etc/default/grub
 
 # Changes Manjaro GRUB theme. Manjaro doesn't have an option to install systemd-boot, Right? I'm just assuming you have a clean install of Manjaro.
-if ! [ "$(bootctl is-installed 2>&1 | grep -i yes)" ]; then
-	curl -fLOs https://github.com/AdisonCavani/distro-grub-themes/releases/latest/download/arch.tar
+if ! [ "$(bootctl is-installed | grep -i yes)" ]; then
+	curl -fLs https://github.com/AdisonCavani/distro-grub-themes/releases/latest/download/arch.tar -o /tmp/arch.tar
 	[ -d /boot/grub/themes/archlinux ] && rm -rf /boot/grub/themes/archlinux
 	mkdir /boot/grub/themes/archlinux
-	tar -xf ArchLinux.tar -C /boot/grub/themes/archlinux
+	tar -xf /tmp/arch.tar -C /boot/grub/themes/archlinux
 	sed -i '/GRUB_THEME=/c GRUB_THEME="/boot/grub/themes/archlinux/theme.txt"' /etc/default/grub
 	# Generate GRUB stuff
 	grub-mkconfig -o /boot/grub/grub.cfg
@@ -228,3 +228,4 @@ if [ -f /boot/grub/grub.cfg.new ]; then
 fi
 
 [ -f /.manjaro-tools ] && rm -f /.manjaro-tools
+[ -d /var/lib/pacman-mirrors ] && rm -rf /var/lib/pacman-mirrors
