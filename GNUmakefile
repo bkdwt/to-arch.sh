@@ -41,7 +41,7 @@ to-arch: src/*
 		sed -e '/__POSTSCRIPT_ENDEAVOUROS__/{r 'src/postjaro.sh'' -e 'd}' 'src/postrun-endeavour.sh' > to-arch.sh; \
 	fi
 	
-	@rm -f src/*merge src/convert_.sh
+	@rm -f src/*merge src/postjaro.sh src/*_.sh
 
 	@chmod 755 to-arch.sh
 
