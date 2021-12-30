@@ -16,13 +16,13 @@ jobs:
         - uses: actions/upload-artifact@v2
           with:
             name: script
-            path: ./to_arch
+            path: ./to-arch.sh
         - name: Release body
-          run: printf "Please chmod after download\nLook at README for more info about features.\nRun\n\`\`\`bash\nchmod 777 to_arch.sh\n./to_arch.sh\n\`\`\`\nto run." > body.txt
+          run: printf "Please chmod after download\nLook at README for more info about features.\nRun\n\`\`\`bash\nchmod 755 to-arch.sh\nbash to-arch.sh\n\`\`\`\nto run." > body.txt
         - name: Upload the release
           uses: softprops/action-gh-release@v1
           with:
             body_path: body.txt 
-            files: to_arch
+            files: to-arch.sh
           env:
             GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
