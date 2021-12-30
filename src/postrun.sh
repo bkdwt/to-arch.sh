@@ -30,6 +30,7 @@ fi
 # The dreaded name of the package is matray, and it literally sprays your screen with Manjaro news and ads.
 # It is seen in the KDE edition.
 [ -d $HOME/.config/matray ] && rm -rf ~/.config/matray
+[ -f $HOME/.config/autostart/manjaro-hello.desktop ] && rm -f ~/.config/autostart/manjaro-hello.desktop
 # Reboot if you want.
 printf "Would you like to reboot? Make sure you have read the above carefully! (y/N)"
 read -r reboot
