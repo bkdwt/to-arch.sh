@@ -54,6 +54,19 @@ fi
 	cp /etc/pacman.d/mirrorlist "${tmp_dir}/mirrorlist"
 )
 
+# Change computer's name if it's manjaro
+if [ -f /etc/hostname ]; then
+	sed -i '/endeavourOS/c\Arch' /etc/hostname
+	sed -i '/EndeavourOS/c\Arch' /etc/hostname
+	sed -i '/endeavour/c\Arch' /etc/hostname
+	sed -i '/Endeavour/c\Arch' /etc/hostname
+fi
+
+sed -i '/endeavourOS/c\Arch' /etc/hosts
+sed -i '/EndeavourOS/c\Arch' /etc/hosts
+sed -i '/endeavour/c\Arch' /etc/hosts
+sed -i '/Endeavour/c\Arch' /etc/hosts
+
 [ -f /etc/os-release ] && sed -i 's/EndeavourOS/Arch Linux/g' /etc/os-release
 [ -f /etc/os-release ] && sed -i 's/ID=endeavouros/ID=arch/g' /etc/os-release
 [ -f /etc/os-release ] && sed -i 's/https:\/\/endeavouros\.com/https:\/\/archlinux\.org/g' /etc/os-release
