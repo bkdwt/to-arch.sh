@@ -9,17 +9,40 @@ fi
 # Bash runs commands on sync but parallelly, so this exits every subshell already running in the shell if running as root.
 [ $? == 1 ] && exit 1;
 
-## User-wide jobs. Precaution notice, nothing else fancy for now.
-__PRESCRIPT__
 
+prescript(){
+__PRESCRIPT__
+}
+
+DISTRO=$(prescript)
+
+if [ "${DISTRO}" == "MANJARNO" ]; then
+    CONVERTER_MANJARNO
+else
+    CONVERTER_ENDEAVOUR
+fi
+
+#no. no manjaro. manjaro bad.
+CONVERTER_MANJARNO(){
 ## System-wide jobs. The core part, this breaks and you system gets borked.
 ## If you use doas instead of sudo, then simply change the sudo to doas.
 sudo bash -c '
-__CONVERTSCRIPT__
+__CONVERTSCRIPT_MANJARMO__
 ' 2>/dev/null # 2>/dev/null is for error redirection.
-
 ## User-wide jobs. Some important cleanup jobs, especially for sway. Makes script more seamless.
-__POSTSCRIPT__
+__POSTSCRIPT_MANJARNO__
+}
+
+#endeavour better. still not arch. 
+CONVERTER_ENDEAVOUR(){
+## System-wide jobs. The core part, this breaks and you system gets borked.
+## If you use doas instead of sudo, then simply change the sudo to doas.
+sudo bash -c '
+__CONVERTSCRIPT_ENDEAVOUR__
+' 2>/dev/null # 2>/dev/null is for error redirection.
+## User-wide jobs. Some important cleanup jobs, especially for sway. Makes script more seamless.
+__POSTSCRIPT_ENDEAVOUR__
+}
 
 # Sometimes the script gives out a non-0 exit code even when there are no errors.
 [ $? != 0 ] && exit 0;
