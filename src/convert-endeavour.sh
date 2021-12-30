@@ -12,12 +12,14 @@ removeIfMatched() { # $1 - Pattern
 pacman -Syy neofetch micro vim efibootmgr --noconfirm
 neofetch
 printf "This is your current distro state.\n"
+tmp_dir="$(mktemp -d)"
 
+rm -f /usr/share/libalpm/hooks/eos*
 
 # Fret not, my friend, as our trustworthy yay would AUR itself when updating
 pacman -Sl endeavouros | cut -f 2 -d' '>/tmp/endeavouros_pkglist
 while read line; do
-    removeIfMatched $line 2>/dev/null
+    removeIfMatched $line
 done < /tmp/endeavouros_pkglist
 
 if [ "$(cat /etc/pacman.conf | grep '\[endeavouros\]')" ]; then
@@ -54,13 +56,16 @@ fi
 	# Backup just in case
 	cp /etc/pacman.d/mirrorlist "${tmp_dir}/mirrorlist"
 )
-pacman -Syyu --noconfirm
+
 [ -f /etc/os-release ] && sed -i 's/EndeavourOS/Arch Linux/g' /etc/os-release
 [ -f /etc/os-release ] && sed -i 's/ID=endeavouros/ID=arch/g' /etc/os-release
 [ -f /etc/os-release ] && sed -i 's/https:\/\/endeavouros\.com/https:\/\/archlinux\.org/g' /etc/os-release
 [ -f /etc/os-release ] && sed -i 's/https:\/\/discovery\.endeavouros\.com/https:\/\/archlinux\.org/g' /etc/os-release
 [ -f /etc/os-release ] && sed -i 's/SUPPORT_URL='"'"'https:\/\/forum\.endeavouros\.com'"'"'/SUPPORT_URL='"'"'https:\/\/bbs\.archlinux\.org'"'"'/g' /etc/os-release
 [ -f /etc/os-release ] && sed -i 's/BUG_REPORT_URL='"'"'https:\/\/forum\.endeavouros\.com.*'"'"'/SUPPORT_URL='"'"'https:\/\/bugs\.archlinux\.org'"'"'/g' /etc/os-release
+
+[ -f /etc/issue ] && sed -i 's/EndeavourOS/Arch/g' /etc/issue
+pacman -Syyu --overwrite \* lsb-release --noconfirm
 
 sed -i '/GRUB_DISTRIBUTOR="EndeavourOS"/c\GRUB_DISTRIBUTOR="Arch"' /etc/default/grub
 if ! [ "$(bootctl is-installed | grep -i yes)" ]; then
@@ -73,8 +78,8 @@ if ! [ "$(bootctl is-installed | grep -i yes)" ]; then
 	grub-mkconfig -o /boot/grub/grub.cfg
 
 else 
-    bootctl remove
-    bootctl install
+    bootctl update
+    printf "Systemd-boot users have to edit the updated the entries manually.\nYou're on your own."
 fi
 
 neofetch
