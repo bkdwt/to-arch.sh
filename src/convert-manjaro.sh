@@ -109,9 +109,13 @@ pacman -Qq | grep 'linux[0-9]' | xargs pacman -Rdd --noconfirm
 if [ "$(cat /etc/pacman.conf | grep '\[manjaro-sway\]')" ]; then
 	sudo sed -ie '/\[manjaro-sway\]/,+2d' /etc/pacman.conf
 fi
-
+###################
+#TODO:Probably some kind of custom hook in manjarno.
+#/usr/share/libalpm/hooks/*
+###################
 # -Syyyyyyyyyyuuuuuuuu calms me down
-pacman -Syyu --overwrite \* bash --noconfirm
+[ -f /etc/lsb-release ] && mv /etc/lsb-release /etc/lsb-release.bak
+pacman -Syyu --overwrite \* bash lsb-release --noconfirm
 
 # As Linus Torvalds said
 pacman -Qq | grep mhwd | xargs pacman -Rdd --noconfirm 2>/dev/null
@@ -181,6 +185,8 @@ fi
 [ -f /etc/os-release ] && sed -i 's/ANSI_COLOR="32;1;24;144;200"/ANSI_COLOR="38;2;23;147;209"/g' /etc/os-release
 [ -f /etc/os-release ] && sed -i 's/manjaro/archlinux/g' /etc/os-release
 [ -f /etc/os-release ] && sed -i 's/manjarolinuxlinux/archlinux/g' /etc/os-release
+
+[ -f /etc/issue ] && sed -i 's/EndeavourOS/Arch/g' /etc/issue
 
 # Screenfetch takes an eternity to run in VMs. I have no damn idea why.
 neofetch
