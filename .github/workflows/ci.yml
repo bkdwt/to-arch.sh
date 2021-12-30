@@ -4,12 +4,12 @@ on:
     paths:
       - 'src/**'
       - '.github/workflows/**'
-      - 'Makefile'
+      - 'GNUMakefile'
   pull_request:
     paths:
       - 'src/**'
       - '.github/workflows/**'
-      - 'Makefile'
+      - 'GNUMakefile'
   workflow_dispatch:
 jobs:
   merge:
@@ -22,4 +22,4 @@ jobs:
         - uses: actions/upload-artifact@v2
           with:
             name: script
-            path: ./to_arch.sh
+            path: ./to-arch.sh
