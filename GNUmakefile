@@ -3,30 +3,42 @@ all: to-arch
 to-arch: src/*
 	@#The at symbol tells gmake to not echo the line being executed
 
+	@# This line is to escape the single quotes in the convert script that gets inserted in "sudo bash -c".
+
 	@if command -v gsed; then \
-		gsed -e '/__PRESCRIPT__/{r 'src/prerun.sh'' -e 'd}' 'src/body.sh' > src/premerge; \
+		gsed "s/'/'\"'\"'/g" src/convert-manjaro.sh > src/convert-manjaro_.sh; \
 	else \
-		sed -e '/__PRESCRIPT__/{r 'src/prerun.sh'' -e 'd}' 'src/body.sh' > src/premerge; \
+		sed "s/'/'\"'\"'/g" src/convert-manjaro.sh > src/convert-manjaro_.sh; \
 	fi
-
-	@# This line is to escape the single quotes in the convert script that gets inserted in「sudo bash -c」.
-
+	
 	@if command -v gsed; then \
-		gsed "s/'/'\"'\"'/g" src/convert.sh > src/convert_.sh; \
+		gsed "s/'/'\"'\"'/g" src/convert-endeavour.sh > src/convert-endeavour_.sh; \
 	else \
-		sed "s/'/'\"'\"'/g" src/convert.sh > src/convert_.sh; \
-	fi
-
-	@if command -v gsed; then \
-		gsed -e '/__CONVERTSCRIPT__/{r 'src/convert_.sh'' -e 'd}' 'src/premerge' > src/convertmerge; \
-	else \
-		sed -e '/__CONVERTSCRIPT__/{r 'src/convert_.sh'' -e 'd}' 'src/premerge' > src/convertmerge; \
+		sed "s/'/'\"'\"'/g" src/convert-endeavour.sh > src/convert-endeavour_.sh; \
 	fi
 
 	@if command -v gsed; then \
-		gsed -e '/__POSTSCRIPT__/{r 'src/postrun.sh'' -e 'd}' 'src/convertmerge' > to-arch.sh; \
+		gsed -e '/__CONVERTSCRIPT_MANJARNO__/{r 'src/convert-manjaro_.sh'' -e 'd}' 'src/premerge' > src/convertmanjaromerge; \
 	else \
-		sed -e '/__POSTSCRIPT__/{r 'src/postrun.sh'' -e 'd}' 'src/convertmerge' > to-arch.sh; \
+		sed -e '/__CONVERTSCRIPT_MANJARNO__/{r 'src/convert-manjaro_.sh'' -e 'd}' 'src/premerge' > src/convertmanjaromerge; \
+	fi
+	
+	@if command -v gsed; then \
+		gsed -e '/__CONVERTSCRIPT_ENDEAVOUROS__/{r 'src/convert-endeavour_.sh'' -e 'd}' 'src/premerge' > src/convertendeavourmerge; \
+	else \
+		sed -e '/__CONVERTSCRIPT_ENDEAVOUROS__/{r 'src/convert-endeavour_.sh'' -e 'd}' 'src/premerge' > src/convertendeavourmerge; \
+	fi
+
+	@if command -v gsed; then \
+		gsed -e '/__POSTSCRIPT_MANJARNO__/{r 'src/convertendeavourmerge.sh'' -e 'd}' 'src/convertendeavourmerge' > postjaro.sh; \
+	else \
+		sed -e '/__POSTSCRIPT_MANJARNO__/{r 'src/convertendeavourmerge.sh'' -e 'd}' 'src/convertendeavourmerge' > postjaro.sh; \
+	fi
+	
+	@if command -v gsed; then \
+		gsed -e '/__POSTSCRIPT_ENDEAVOUROS__/{r 'src/postjaro.sh'' -e 'd}' 'src/postrun-endeavour.sh' > to-arch.sh; \
+	else \
+		sed -e '/__POSTSCRIPT_ENDEAVOUROS__/{r 'src/postjaro.sh'' -e 'd}' 'src/postrun-endeavour.sh' > to-arch.sh; \
 	fi
 	
 	@rm -f src/*merge src/convert_.sh
