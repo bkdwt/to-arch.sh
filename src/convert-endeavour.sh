@@ -79,5 +79,16 @@ else
     printf "Systemd-boot users have to edit the updated the entries manually.\nYou're on your own."
 fi
 
+[ -f /etc/locale.conf.pacsave ] && \mv -f /etc/locale.conf.pacsave /etc/locale.conf
+locale-gen
+
+# BIOS, LUKS fix
+if [ -f /boot/grub/grub.cfg.new ]; then
+	if [ -f /boot/grub/grub.cfg ]; then
+		rm -f /boot/grub/grub.cfg
+	fi
+	mv /boot/grub/grub.cfg.new /boot/grub/grub.cfg
+fi
+
 neofetch
 printf "Now it's Arch! Enjoy!\n"
