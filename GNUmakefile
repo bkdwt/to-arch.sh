@@ -30,9 +30,9 @@ to-arch: src/*
 	fi
 
 	@if command -v gsed; then \
-		gsed -e '/__POSTSCRIPT_MANJARNO__/{r 'src/postrun-manjaro.sh'' -e 'd}' 'src/convertendeavourmerge' > postjaro.sh; \
+		gsed -e '/__POSTSCRIPT_MANJARNO__/{r 'src/postrun-manjaro.sh'' -e 'd}' 'src/convertendeavourmerge' > src/postjaro.sh; \
 	else \
-		sed -e '/__POSTSCRIPT_MANJARNO__/{r 'src/postrun-manjaro.sh'' -e 'd}' 'src/convertendeavourmerge' > postjaro.sh; \
+		sed -e '/__POSTSCRIPT_MANJARNO__/{r 'src/postrun-manjaro.sh'' -e 'd}' 'src/convertendeavourmerge' > src/postjaro.sh; \
 	fi
 	
 	@if command -v gsed; then \
