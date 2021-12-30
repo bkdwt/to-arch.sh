@@ -3,11 +3,7 @@ if pacman -Qq | grep -q plasma-desktop; then
 	/usr/lib/plasma-changeicons breeze-dark 2>/dev/null
 	lookandfeeltool --apply "org.kde.breezedark.desktop" 2>/dev/null
 fi
-# Changes shell since this will remove Manjaro's zsh configs.
-# I use yash btw.
-printf "Would you like to change the shell?\nManjaro\'s default zsh plugins have all been uninstalled, so zsh would look bad. (Y/n)"
-read -r shell
-[ "$(tr '[:upper:]' '[:lower:]' <<< "$shell")" = "n" ] || chsh -s "/bin/bash"
+
 # Deletes sway config cuz sway edition saves its configs in a packages and sway gets borked after deleteing those.
 # And yes sway will look like plain i3.
 if pacman -Qq | grep -q sway; then
