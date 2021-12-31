@@ -1,4 +1,5 @@
 # to-arch.sh — Manjaro/EndeavourOS becomes Arch
+## EndeavourOS support is not finished yet, wait
 ![](https://img.shields.io/github/downloads/kskeigrshi/to-arch.sh/total)<br>
 This converts your Manjaro or EndeavourOS installation into Arch Linux.<br>This script is inspired by [this gist](https://gist.github.com/mariuszkurek/bff8a821076f5406b15fe9be528957b6/).<br>
 
