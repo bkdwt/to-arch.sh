@@ -229,13 +229,7 @@ if [ -f /etc/arch-release ]; then
 	sed -i '/Manjaro/c\Arch' /etc/arch-release
 fi
 
-# BIOS, LUKS fix
-if [ -f /boot/grub/grub.cfg.new ]; then
-	if [ -f /boot/grub/grub.cfg ]; then
-		rm -f /boot/grub/grub.cfg
-	fi
-	mv /boot/grub/grub.cfg.new /boot/grub/grub.cfg
-fi
+
 
 [ -f /.manjaro-tools ] && rm -f /.manjaro-tools
 [ -d /var/lib/pacman-mirrors ] && rm -rf /var/lib/pacman-mirrors
