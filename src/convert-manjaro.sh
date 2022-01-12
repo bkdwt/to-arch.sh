@@ -157,6 +157,8 @@ if ! [ "$(bootctl is-installed | grep -i yes)" ]; then
 	tar -xf /tmp/arch.tar -C /boot/grub/themes/archlinux
 	sed -i '/GRUB_THEME=/c GRUB_THEME="/boot/grub/themes/archlinux/theme.txt"' /etc/default/grub
 	# Generate GRUB stuff
+	[ -f /boot/grub/grub.cfg ] && rm /boot/grub/grub.cfg
+	[ -f /boot/grub/grub.cfg.new ] && rm /boot/grub/grub.cfg.new
 	grub-mkconfig -o /boot/grub/grub.cfg
 
 else 
