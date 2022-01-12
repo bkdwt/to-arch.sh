@@ -9,7 +9,7 @@ removeIfMatched() { # $1 - Pattern
 	true
 }
 
-pacman -Syy neofetch micro vim efibootmgr --noconfirm
+pacman -Syy neofetch --noconfirm
 neofetch
 printf "This is your current distro state.\n"
 tmp_dir="$(mktemp -d)"
@@ -25,34 +25,19 @@ fi
 
 [ -f /etc/pacman.d/endeavouros-mirrorlist ] && rm /etc/pacman.d/endeavouros-mirrorlist
 
-(
-	cd /etc/pacman.d
-	rm mirrorlist
-	# Get mirrorlist
-	curl -o mirrorlist -sL 'https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&ip_version=6'
+
+cd /etc/pacman.d
+rm mirrorlist
+# Get mirrorlist
+curl -o mirrorlist -sL 'https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&ip_version=6'
 	
 	
 	
-	[ -f /etc/pacman.d/mirrorlist.pacnew ] && rm /etc/pacman.d/mirrorlist.pacnew
-	[ -f /etc/pacman.conf.pacnew ] && rm /etc/pacman.conf.pacnew
+[ -f /etc/pacman.d/mirrorlist.pacnew ] && rm /etc/pacman.d/mirrorlist.pacnew
+[ -f /etc/pacman.conf.pacnew ] && rm /etc/pacman.conf.pacnew
 	
-	sed -i '/SyncFirst/d' /etc/pacman.conf
-	sed -i '/HoldPkg/d' /etc/pacman.conf
-	
-	# Use $VISUAL instead?
-	printf "==> Uncomment mirrors from your country.\nPress 1 for Nano, 2 for vim, 3 for vi, 4 for micro, or any other key for your default \$EDITOR.\n"
-	read -rn 1 whateditor
-	case "$whateditor" in
-		"1") nano /etc/pacman.d/mirrorlist ;;
-		"2") vim /etc/pacman.d/mirrorlist ;;
-		"3") vi /etc/pacman.d/mirrorlist ;;
-		"4") micro /etc/pacman.d/mirrorlist ;;
-		*) $EDITOR /etc/pacman.d/mirrorlist ;;
-	esac
-	
-	# Backup just in case
-	cp /etc/pacman.d/mirrorlist "${tmp_dir}/mirrorlist"
-)
+sed -i '/SyncFirst/d' /etc/pacman.conf
+sed -i '/HoldPkg/d' /etc/pacman.conf
 
 # Change computer's name if it's manjaro
 if [ -f /etc/hostname ]; then
