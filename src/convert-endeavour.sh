@@ -23,18 +23,7 @@ if [ "$(cat /etc/pacman.conf | grep '\[endeavouros\]')" ]; then
 	sudo sed -ie '/\[endeavouros\]/,+2d' /etc/pacman.conf
 fi
 
-[ -f /etc/pacman.d/endeavouros-mirrorlist ] && rm /etc/pacman.d/endeavouros-mirrorlist
-
-
-cd /etc/pacman.d
-rm mirrorlist
-# Get mirrorlist
-curl -o mirrorlist -sL 'https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&ip_version=6'
-	
-	
-	
-[ -f /etc/pacman.d/mirrorlist.pacnew ] && rm /etc/pacman.d/mirrorlist.pacnew
-[ -f /etc/pacman.conf.pacnew ] && rm /etc/pacman.conf.pacnew
+[ -f /etc/pacman.d/endeavouros-mirrorlist ] && rm /etc/pacman.d/endeavouros-mirrorlist	
 	
 sed -i '/SyncFirst/d' /etc/pacman.conf
 sed -i '/HoldPkg/d' /etc/pacman.conf
