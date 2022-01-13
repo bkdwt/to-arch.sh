@@ -37,7 +37,7 @@ fi
 
 
 DISTRO=$(
-printf "This script comes with ABSOLUTELY NO WARRANTY!\n" 1>&2
+printf "This script comes with ABSOLUTELY NO WARRANTY!\nTHIS CAN EVEN BREAK YOUR SYSTEM AND YOU HAVE DECIDED TO RUN IT!\n" 1>&2
 printf "What distro? Press 1 if you run Manjaro, 2 if you run EndeavourOS.\n" 1>&2
 read -rn 1 whatdistro
 case "$whatdistro" in
