@@ -1,5 +1,5 @@
 # to-arch.sh — Manjaro/EndeavourOS becomes Arch
-## Please be goddamn sure I have no responsibility for a non bootable system. It's your choice to run something like this, right?
+## Please be goddamn sure that I have no responsibility for a non bootable system. It's your choice to run something like this, right?
 ![](https://img.shields.io/github/downloads/kskeigrshi/to-arch.sh/total)<br>
 This converts your Manjaro or EndeavourOS installation into Arch Linux.<br>This script is inspired by [this gist](https://gist.github.com/mariuszkurek/bff8a821076f5406b15fe9be528957b6/).<br>
 By the way, the makefile of this script assumes that you use GNU coreutils. If you're a pervert who uses something like BSD coreutils, please tell me, I'll ignore you.
