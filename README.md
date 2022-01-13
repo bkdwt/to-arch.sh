@@ -4,7 +4,7 @@ This converts your Manjaro or EndeavourOS installation into Arch Linux.<br>This 
 
 ## How to use
 Go to the [Releases tab](https://github.com/kskeigrshi/to-arch.sh/releases/latest).
-<br>Download `to-arch.sh`.
+<br>Download `to-arch.sh` by clicking on it.
 Run
 ```
 bash to-arch.sh
