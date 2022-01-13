@@ -17,7 +17,7 @@ tmp_dir="$(mktemp -d)"
 rm -f /usr/share/libalpm/hooks/eos*
 
 #https://bbs.archlinux.org/viewtopic.php?id=183737
-LANG=C sudo pacman -Rcns $(pacman -Sl endeavouros | grep '\[installed\]' | cut -f2 -d' ')
+LANG=C sudo pacman -Rcns $(pacman -Sl endeavouros | grep '\[installed\]' | cut -f2 -d' ') --noconfirm
 
 if [ "$(cat /etc/pacman.conf | grep '\[endeavouros\]')" ]; then
 	sudo sed -ie '/\[endeavouros\]/,+2d' /etc/pacman.conf
