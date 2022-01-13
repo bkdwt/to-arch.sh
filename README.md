@@ -4,7 +4,9 @@ This converts your Manjaro or EndeavourOS installation into Arch Linux.<br>This 
 
 ## Showcase(7x speedup)
 
-https://user-images.githubusercontent.com/90227297/132807588-8757a8c6-eea3-47bb-8231-53fbac0a0105.mp4
+https://user-images.githubusercontent.com/90227297/149334396-f0d8c141-4bff-47e7-a0df-bbf4d4bb4aac.mp4
+
+https://user-images.githubusercontent.com/90227297/149334408-b5dd4a51-04a7-4dc2-a9ac-cee871234d85.mp4
 
 ## Why did I write this?
 
