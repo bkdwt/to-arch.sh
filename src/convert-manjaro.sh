@@ -184,13 +184,14 @@ if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 fi
 
 # I know... sorry...
-[ -f /etc/os-release ] && sed -i 's/Manjaro/Arch/g' /etc/os-release
-[ -f /etc/os-release ] && sed -i 's/ID=manjaro/ID=arch/g' /etc/os-release
-[ -f /etc/os-release ] && sed -i 's/ANSI_COLOR="32;1;24;144;200"/ANSI_COLOR="38;2;23;147;209"/g' /etc/os-release
-[ -f /etc/os-release ] && sed -i 's/manjaro/archlinux/g' /etc/os-release
-[ -f /etc/os-release ] && sed -i 's/manjarolinuxlinux/archlinux/g' /etc/os-release
-[ -f /etc/os-release ] && sed -i 's/archlinuxlinux/archlinux-logo/g' /etc/os-release
-
+if [ -f /etc/os-release ]; then
+	sed -i 's/Manjaro/Arch/g' /etc/os-release
+	sed -i 's/ID=manjaro/ID=arch/g' /etc/os-release
+	sed -i 's/ANSI_COLOR="32;1;24;144;200"/ANSI_COLOR="38;2;23;147;209"/g' /etc/os-release
+	sed -i 's/manjaro/archlinux/g' /etc/os-release
+	sed -i 's/manjarolinuxlinux/archlinux/g' /etc/os-release
+	sed -i 's/archlinuxlinux/archlinux-logo/g' /etc/os-release
+fi
 
 [ -f /etc/issue ] && sed -i 's/Manjaro/Arch/g' /etc/issue
 

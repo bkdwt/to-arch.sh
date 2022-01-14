@@ -41,12 +41,14 @@ sed -i '/EndeavourOS/c\Arch' /etc/hosts
 sed -i '/endeavour/c\Arch' /etc/hosts
 sed -i '/Endeavour/c\Arch' /etc/hosts
 
-[ -f /etc/os-release ] && sed -i 's/EndeavourOS/Arch Linux/g' /etc/os-release
-[ -f /etc/os-release ] && sed -i 's/ID=endeavouros/ID=arch/g' /etc/os-release
-[ -f /etc/os-release ] && sed -i 's/https:\/\/endeavouros\.com/https:\/\/archlinux\.org/g' /etc/os-release
-[ -f /etc/os-release ] && sed -i 's/https:\/\/discovery\.endeavouros\.com/https:\/\/archlinux\.org/g' /etc/os-release
-[ -f /etc/os-release ] && sed -i 's/SUPPORT_URL='"'"'https:\/\/forum\.endeavouros\.com'"'"'/SUPPORT_URL='"'"'https:\/\/bbs\.archlinux\.org'"'"'/g' /etc/os-release
-[ -f /etc/os-release ] && sed -i 's/BUG_REPORT_URL='"'"'https:\/\/forum\.endeavouros\.com.*'"'"'/SUPPORT_URL='"'"'https:\/\/bugs\.archlinux\.org'"'"'/g' /etc/os-release
+if [ -f /etc/os-release ]; then
+	sed -i 's/EndeavourOS/Arch Linux/g' /etc/os-release
+	sed -i 's/ID=endeavouros/ID=arch/g' /etc/os-release
+	sed -i 's/https:\/\/endeavouros\.com/https:\/\/archlinux\.org/g' /etc/os-release
+	sed -i 's/https:\/\/discovery\.endeavouros\.com/https:\/\/archlinux\.org/g' /etc/os-release
+	sed -i 's/SUPPORT_URL='"'"'https:\/\/forum\.endeavouros\.com'"'"'/SUPPORT_URL='"'"'https:\/\/bbs\.archlinux\.org'"'"'/g' /etc/os-release
+	sed -i 's/BUG_REPORT_URL='"'"'https:\/\/forum\.endeavouros\.com.*'"'"'/SUPPORT_URL='"'"'https:\/\/bugs\.archlinux\.org'"'"'/g' /etc/os-release
+fi
 
 [ -f /etc/issue ] && sed -i 's/EndeavourOS/Arch/g' /etc/issue
 pacman -Syyu --overwrite \* lsb-release --noconfirm
