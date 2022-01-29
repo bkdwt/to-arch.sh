@@ -19,7 +19,7 @@ rm -f /usr/share/libalpm/hooks/eos*
 #https://bbs.archlinux.org/viewtopic.php?id=183737
 LANG=C sudo pacman -Rcns $(pacman -Sl endeavouros | grep '\[installed\]' | cut -f2 -d' ') --noconfirm
 
-if [ "$(cat /etc/pacman.conf | grep '\[endeavouros\]')" ]; then
+if [ "$(grep '\[endeavouros\]' /etc/pacman.conf)" ]; then
 	sudo sed -ie '/\[endeavouros\]/,+2d' /etc/pacman.conf
 fi
 

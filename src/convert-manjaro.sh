@@ -106,7 +106,7 @@ pacman -Qq | grep breath | xargs pacman -Rdd --noconfirm
 pacman -Qq | grep 'linux[0-9]' | xargs pacman -Rdd --noconfirm
 
 #Manjaro SwayWM edition
-if [ "$(cat /etc/pacman.conf | grep '\[manjaro-sway\]')" ]; then
+if [ "$(grep '\[manjaro-sway\]' /etc/pacman.conf)" ]; then
 	sudo sed -ie '/\[manjaro-sway\]/,+2d' /etc/pacman.conf
 fi
 ###################
