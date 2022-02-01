@@ -16,7 +16,7 @@ pacman -Syy neofetch micro vim --noconfirm
 neofetch
 printf "This is your current distro state.\n"
 
-sudo pacman -R garuda-hooks
+sudo pacman -Rdd garuda-hooks --noconfirm
 
 if grepPacmanQuery pamac; then
 	# Pamac is there for a reason, and I'm not hostile towards it.
