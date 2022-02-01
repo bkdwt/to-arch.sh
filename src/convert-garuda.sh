@@ -105,11 +105,10 @@ fi
 sed -i '/garuda/c\Arch' /etc/hosts
 sed -i '/Garuda/c\Arch' /etc/hosts
 
-# linux-lts is generally more stable(especially for Intel graphics, uhd620 seems to have a black screen issue since 5.11)
-printf "What kernel? Press 1 for linux-lts(more stable), 2 for normal linux.\n"
+printf "What kernel? Press 1 for linux, 2 for linux-lts.\n"
 read -rn 1 whatkernel
 case "$whatkernel" in
-        "2") pacman -S linux linux-headers --noconfirm ;;
+        "1") pacman -S linux linux-headers --noconfirm ;;
         *) pacman -S linux-lts linux-lts-headers --noconfirm ;;
 esac
 
