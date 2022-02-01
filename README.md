@@ -1,4 +1,4 @@
-# to-arch.sh — Manjaro/EndeavourOS becomes Arch
+# to-arch.sh — Arch derivativeS becomes Arch
 ## How to use
 Go to the <a href="https://github.com/kskeigrshi/to-arch.sh/releases/latest">Releases tab</a>.
 <br>Download <code>to-arch.sh</code> by clicking on it.
