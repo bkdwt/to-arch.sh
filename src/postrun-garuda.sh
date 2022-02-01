@@ -29,7 +29,7 @@ fi
 [ -f $HOME/.config/autostart/manjaro-hello.desktop ] && rm -f ~/.config/autostart/manjaro-hello.desktop
 # Reboot if you want.
 #NO FISH! DO NOT USE FISH! IT WILL DAMAGE YOUR UNIX SKILLS PERMANENTLY!
-chsh -s $(which bash)
+chsh -s /bin/bash
 printf "Would you like to reboot? Make sure you have read the above carefully! (y/N)"
 read -r reboot
 #Thanks to YTG1234 for this line.
