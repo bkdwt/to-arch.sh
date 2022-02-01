@@ -117,7 +117,7 @@ fi
 [ -f /etc/lsb-release ] && mv /etc/lsb-release /etc/lsb-release.bak
 pacman -Syyu --overwrite \* bash lsb-release --noconfirm
 
-# As Linus Torvalds said
+# As Linus Torvalds said, nvidia, fück you
 pacman -Qq | grep mhwd | xargs pacman -Rdd --noconfirm 2>/dev/null
 
 # Change computer's name if it's manjaro
