@@ -108,8 +108,8 @@ sed -i '/Garuda/c\Arch' /etc/hosts
 printf "What kernel? Press 1 for linux, 2 for linux-lts.\n"
 read -rn 1 whatkernel
 case "$whatkernel" in
-        "1") pacman -S linux linux-headers --noconfirm ;;
-        *) pacman -S linux-lts linux-lts-headers --noconfirm ;;
+        "2") pacman -S linux-lts linux-lts-headers --noconfirm ;;
+        *) pacman -S linux linux-headers --noconfirm ;;
 esac
 
 # Fück you nvidia
