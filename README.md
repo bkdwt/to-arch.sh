@@ -1,4 +1,4 @@
-# to-arch.sh — Arch derivatives becomes Arch
+# to-arch.sh — Arch derivatives become Arch
 ## How to use
 Go to the <a href="https://github.com/kskeigrshi/to-arch.sh/releases/latest">Releases tab</a>.
 <br>Download <code>to-arch.sh</code> by clicking on it.
