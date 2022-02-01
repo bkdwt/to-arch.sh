@@ -63,6 +63,7 @@ fi
 # Manjaro uses a different mirrorlist package to identify from the Arch one.
 pacman -Qq pacman-mirrors &>/dev/null && pacman -Qq | grep pacman-mirrors | xargs pacman -Rdd --noconfirm
 
+
 # Get pacman, mirrorlist and lsb_release from website, not mirrors
 pacman -U --overwrite \*  https://www.archlinux.org/packages/core/x86_64/pacman/download/ https://www.archlinux.org/packages/core/any/pacman-mirrorlist/download/ https://www.archlinux.org/packages/community/any/lsb-release/download/ --noconfirm
 
@@ -81,6 +82,7 @@ sed -i '/HoldPkg/d' /etc/pacman.conf
 
 # Purge Manjaro's software
 pacman -Qq | grep garuda | xargs pacman -Rdd --noconfirm
+pacman -Qq | grep plymouth | xargs pacman -Rdd --noconfirm
 # KDE Plasma
 pacman -Qq | grep sweet | xargs pacman -Rdd --noconfirm
 
