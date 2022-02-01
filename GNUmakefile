@@ -9,7 +9,7 @@ to-arch: src/*
 	
 	@sed "s/'/'\"'\"'/g" src/convert-endeavour.sh > src/convert-endeavour_.sh; 
 	
-        @sed "s/'/'\"'\"'/g" src/convert-garuda.sh > src/convert-garuda_.sh; 
+	@sed "s/'/'\"'\"'/g" src/convert-garuda.sh > src/convert-garuda_.sh; 
 
 
 	@sed -e '/__CONVERTSCRIPT_MANJARNO__/{r 'src/convert-manjaro_.sh'' -e 'd}' 'src/body.sh' > src/convertmanjaromerge; 
