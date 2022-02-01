@@ -14,6 +14,18 @@ __CONVERTSCRIPT_MANJARNO__
 __POSTSCRIPT_MANJARNO__
 }
 
+
+#garuda, if you haven't noticed.
+CONVERTER_MANJAROPP(){
+
+sudo bash -c '
+__CONVERTSCRIPT_MANJAROPP__
+' 2>/dev/null
+
+__POSTSCRIPT_MANJAROPP__
+
+}
+
 #endeavour better. still not arch. let's convert.
 CONVERTER_ENDEAVOUROS(){
 ## System-wide jobs. The core part, this breaks and you system gets borked.
@@ -38,17 +50,21 @@ fi
 
 DISTRO=$(
 printf "This script comes with ABSOLUTELY NO WARRANTY!\nTHIS CAN EVEN BREAK YOUR SYSTEM AND YOU HAVE DECIDED TO RUN IT!\n" 1>&2
-printf "What distro? Press 1 if you run Manjaro, 2 if you run EndeavourOS.\n" 1>&2
+printf "What distro? Press 1 if you run Manjaro, 2 if you run EndeavourOS, 3 if you run Garuda.\n" 1>&2
 read -rn 1 whatdistro
 case "$whatdistro" in
         "1") echo MANJARNO ;;
-        *) echo ENDEAVOUROS ;;
+	"2") echo ENDEAVOUROS ;;
+        "3") echo MANJAROPP ;;
+	*) exit 1 ;;
 esac
 read -rp "==>Press Enter to continue" 1>&2
 )
 
 if [ "${DISTRO}" == "MANJARNO" ]; then
     CONVERTER_MANJARNO
+elif [ "${DISTRO}" == "MANJAROPP" ]; then
+    CONVERTER_MANJAROPP
 else
     CONVERTER_ENDEAVOUROS
 fi
