@@ -15,6 +15,12 @@ bash to-arch.sh
 ### This converts your Manjaro or EndeavourOS installation into Arch Linux while preserving the userland and packages.<br>
 By the way, the makefile of this script assumes that you use GNU coreutils. If you're a pervert who uses something like BSD coreutils on Linux, please tell me, as I'll ignore you.
 
+## Contributing
+
+Issues: https://todo.sr.ht/~kskeigrshi/to-arch.sh/
+
+Patches(or Pull Requests as soydevs call it): Send a patch to <code>~kskeigrshi/to-arch.sh-devel@lists.sr.ht</code> using <code>git-send-email</code>. Check https://git-send-email.io/ if you are unclear.
+
 ## Showcase
 
 <img src="https://git.sr.ht/~kskeigrshi/to-arch.sh/blob/master/blob/endeavour.gif" />
