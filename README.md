@@ -1,10 +1,14 @@
 # to-arch.sh — Arch derivatives become Arch
 ## How to use
-Go to the <a href="https://github.com/kskeigrshi/to-arch.sh/releases/latest">Releases tab</a>.
-<br>Download <code>to-arch.sh</code> by clicking on it.
+Go to the <a href="https://lists.sr.ht/~kskeigrshi/to-arch.sh-announce">Releases page</a> and click on the top version number.
+
+Download <code>to-arch.sh</code> by clicking on the link.
+
 Run
+
 <code>
-bash to-arch.sh</code>.
+bash to-arch.sh
+</code>.
 
 ## Please be goddamn sure that I have no responsibility for a non bootable system or a wiped out /home(it's a Bash bug, not my fault). It's your choice to run something like this, right?
 ![](https://img.shields.io/github/downloads/kskeigrshi/to-arch.sh/total)<br>
