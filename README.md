@@ -1,8 +1,8 @@
 # to-arch.sh — Arch derivatives become Arch
 ## How to use
-Go to the <a href="https://lists.sr.ht/~kskeigrshi/to-arch.sh-announce">Releases page</a> and click on the top version number.
+Go to the <a href="https://git.sr.ht/~kskeigrshi/to-arch.sh/refs">Releases page</a> and click on the top version number.
 
-Download <code>to-arch.sh</code> by clicking on the link.
+Download <code>to-arch.sh</code>.
 
 Run
 
