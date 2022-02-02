@@ -13,7 +13,7 @@ By the way, the makefile of this script assumes that you use GNU coreutils. If y
 
 ## Showcase
 
-<img src="./endeavourc.gif" />
+<img src="https://git.sr.ht/~kskeigrshi/to-arch.sh/blob/master/blob/endeavour.gif" />
 
 ## Why did I write this?
 
