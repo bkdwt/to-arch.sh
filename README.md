@@ -11,7 +11,6 @@ bash to-arch.sh
 </code>.
 
 ## Please be goddamn sure that I have no responsibility for a non bootable system or a wiped out /home(it's a Bash bug, not my fault). It's your choice to run something like this, right?
-![](https://img.shields.io/github/downloads/kskeigrshi/to-arch.sh/total)<br>
 ### This converts your Manjaro or EndeavourOS installation into Arch Linux while preserving the userland and packages.<br>
 By the way, the makefile of this script assumes that you use GNU coreutils. If you're a pervert who uses something like BSD coreutils on Linux, please tell me, as I'll ignore you.
 

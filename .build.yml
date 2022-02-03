@@ -6,7 +6,7 @@ packages:
 sources:
   - https://git.sr.ht/~kskeigrshi/to-arch.sh
 secrets:
-  - 520ca5eb-17ad-4a0b-8b08-313dc8450654
+  - cbd0a118-651a-41ac-afdf-b74da3e87af5
 artifacts:
   - to-arch.sh/to-arch.sh
   
