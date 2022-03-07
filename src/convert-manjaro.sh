@@ -17,7 +17,6 @@ neofetch
 printf "This is your current distro state.\n"
 
 if grepPacmanQuery pamac; then
-	# Pamac is there for a reason, and I'm not hostile towards it.
 	printf "\nDo you want to remove pamac?(Y/n)\n"
 	read -rn 1 a
 	case "$a" in
